@@ -623,23 +623,23 @@ static BOOL aspect_isSelectorAllowedAndTrack(NSObject *self, SEL selector, Aspec
         } while ((currentClass = class_getSuperclass(currentClass)));
 
         // Add the selector as being modified.
-        currentClass = klass;
-        AspectTracker *subclassTracker = nil;
-        do {
-            tracker = swizzledClassesDict[currentClass];
-            if (!tracker) {
-                tracker = [[AspectTracker alloc] initWithTrackedClass:currentClass];
-                swizzledClassesDict[(id<NSCopying>)currentClass] = tracker;
-            }
-            if (subclassTracker) {
-                [tracker addSubclassTracker:subclassTracker hookingSelectorName:selectorName];
-            } else {
-                [tracker.selectorNames addObject:selectorName];
-            }
-
-            // All superclasses get marked as having a subclass that is modified.
-            subclassTracker = tracker;
-        }while ((currentClass = class_getSuperclass(currentClass)));
+//        currentClass = klass;
+//        AspectTracker *subclassTracker = nil;
+//        do {
+//            tracker = swizzledClassesDict[currentClass];
+//            if (!tracker) {
+//                tracker = [[AspectTracker alloc] initWithTrackedClass:currentClass];
+//                swizzledClassesDict[(id<NSCopying>)currentClass] = tracker;
+//            }
+//            if (subclassTracker) {
+//                [tracker addSubclassTracker:subclassTracker hookingSelectorName:selectorName];
+//            } else {
+//                [tracker.selectorNames addObject:selectorName];
+//            }
+//
+//            // All superclasses get marked as having a subclass that is modified.
+//            subclassTracker = tracker;
+//        }while ((currentClass = class_getSuperclass(currentClass)));
 	} else {
 		return YES;
 	}
